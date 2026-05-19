@@ -1,0 +1,49 @@
+B3	Boomerang
+B3	Fire Arrow x5
+B7	Eightfold Blade
+B7	Serpentine Spear
+B7	Shield of the Mind's Eye
+B8	Arrow x10
+B9	Arrow x10
+B9	Silver Bow (MM)
+B10	Soldier's Bow (MM)
+B11	Fire Arrow x10
+B11	Shock Arrow x10
+M1	Soldier's Bow
+M1	Soldier's Broadsword
+M2	Feathered Edge
+M3	Feathered Spear
+M4	Knight's Shield
+M4	Soldier's Bow
+M5	Falcon Bow
+M5	Hylian Trousers
+M5	Knight's Broadsword
+M7	Forest Dweller's Spear
+M11	Forest Dweller's Spear
+M11	Forest Dweller's Sword
+M11	Hylian Tunic
+M12	Arrow x10
+M13	Duplex Bow
+M14	Eightfold Longblade
+F3	Knight's Bow
+F3	Knight's Shield
+F3	Royal Guard's Sword
+F5	Ice Arrow x5
+F6	Ancient Arrow x3
+F6	Flamebreaker Boots
+F6	Knight's Bow
+F10	Ancient Arrow x3
+F12	Hylian Tunic
+F12	Royal Guard's Shield
+F12	Stone Smasher
+F13	Bomb Arrow x5
+F14	Ancient Arrow x3
+F17	Bomb Arrow x5
+F18	Royal Bow
+F18	Royal Broadsword
+F18	Royal Shield
+F19	Knight's Shield
+F21	Bomb Arrow x5
+F22	Royal Bow
+F22	Royal Shield
+F23	Bomb Arrow x5

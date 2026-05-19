@@ -48,65 +48,67 @@
 ## Great Plateau
 routes/GP
 
-- Great Plateau 100_.docx
+- [Great Plateau 100_.docx](./routes/GP/Great%20Plateau%20100_.docx)
 
 ## Any Percent
 routes/Any
 
-- Any_ Resources 2022.docx
+- [Any_ Resources 2022.docx](routes/Any/Any_%20Resources%202022.docx)
 
 ## All Dungeons
 routes/AD
 
-- AD_ist.txt
-- All Dungeons (IST, original).xlsx
-- All Dungeons guide.pdf
-- Dungeon Practice Saves.zip
+- [AD_ist.txt](routes/AD/AD_ist.txt)
+- [All Dungeons (IST, original).xlsx](routes/AD/All%20Dungeons%20(IST,%20original).xlsx)
+- [All Dungeons guide.pdf](routes/AD/All%20Dungeons%20guide.pdf)
+- [Dungeon Practice Saves.zip](routes/AD/Dungeon%20Practice%20Saves.zip)
 - all-dungeons
   - celer route https://celer.pistonite.org/view/cobchamp/all-dungeons
   - https://github.com/cobchamp/all-dungeons
   - 2024-07-15
 - alldungeons
-  - celer route https://celer.pistonite.org/view/taoplusplus/alldungeons
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/alldungeons
   - https://github.com/taoplusplus/alldungeons
   - 2022-09-07
 - botw_all_dungeons
-  - celer route https://celer.pistonite.org/view/cobchamp/botw_all_dungeons
+  - celer route https://celer.itntpiston.app/#/gh/cobchamp/botw_all_dungeons
   - https://github.com/cobchamp/botw_all_dungeons
   - 2022-07-18
+  - Missing bundle.json
 - botw-ad
-  - celer route https://celer.pistonite.org/view/CrazyAz/botw-ad
+  - celer route https://celer.itntpiston.app/#/gh/CrazyAz/botw-ad
   - https://github.com/CrazyAz/botw-ad
   - 2023-02-21
 - ad-proto
-  - celer route https://celer.pistonite.org/view/ProtoSR/celer-botw/
+  - celer route https://celer.itntpiston.app/#/gh/ProtoSR/celer-botw/routes/all-dungeons
   - https://github.com/ProtoSR/celer-botw/
   - 2024-05-07
+  - Missing bundle.json
 
 ### All Dungeons EX
 
 - adex2
-  - celer route https://celer.pistonite.org/view/Futurelander/adex2
+  - celer route https://celer.itntpiston.app/#/gh/Futurelander/adex2
   - https://github.com/Futurelander/adex2
   - 2022-09-16
-- ADEX 2022.xlsx
-- ADEX ROUTE.docx
+- [ADEX 2022.xlsx](routes/AD/ADEX%202022.xlsx)
+- [ADEX ROUTE.docx](routes/AD/ADEX%20ROUTE.docx)
 
 ## All Main Quests
 routes/AMQ
-- All Main Quests - Restricted (2022 Route).docx
-- All Main Quests Unrestricted Route Document.docx
-- AMQ_R_finito.json
+- [All Main Quests - Restricted (2022 Route).docx](routes/AMQ/All%20Main%20Quests%20-%20Restricted%20(2022%20Route).docx)
+- [All Main Quests Unrestricted Route Document.docx](routes/AMQ/All%20Main%20Quests%20Unrestricted%20Route%20Document.docx)
+- [AMQ_R_finito.json](routes/AMQ/AMQ_R_finito.json)
 - amqnr
-  - celer route https://celer.pistonite.org/view/taoplusplus/amqnr
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/amqnr
   - https://github.com/taoplusplus/amqnr
   - 2022-09-17
 - amqr
-  - celer route https://celer.pistonite.org/view/taoplusplus/amqr
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/amqr
   - https://github.com/taoplusplus/amqr
   - 2022-09-03
 - botw_all_main_quests_nr
-  - celer route https://celer.pistonite.org/view/cobchamp/botw_all_main_quests_nr
+  - celer route https://celer.itntpiston.app/#/gh/cobchamp/botw_all_main_quests_nr
   - https://github.com/cobchamp/botw_all_main_quests_nr
   - 2022-09-01
 
@@ -114,11 +116,12 @@ routes/AMQ
 routes/AQ
 
 - allquests
-  - celer route https://celer.pistonite.org/view/taoplusplus/allquests
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/allquests
   - https://github.com/taoplusplus/allquests
   - 2022-06-20
+  - Missing bundle.json
 - botw-aq-route
-  - celer route https://celer.pistonite.org/view/CrazyAZ/botw-aq-route
+  - celer route https://celer.itntpiston.app/#/gh/CrazyAZ/botw-aq-route
   - https://github.com/CrazyAZ/botw-aq-route
   - 2022-09-22
 
@@ -126,18 +129,18 @@ routes/AQ
 ## All Shrines
 routes/AS
 
-- All Shrines Restricted.docx
+- [All Shrines Restricted.docx](routes/AS/All%20Shrines%20Restricted.docx)
+- [AllShrinesRoute.pdf](routes/AS/AllShrinesRoute.pdf)
 - allshrines
-  - celer route https://celer.pistonite.org/view/taoplusplus/allshrines
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/allshrines
   - https://github.com/taoplusplus/allshrines
   - 2022-09-03
-- AllShrinesRoute.pdf
 - asr
-  - celer route https://celer.pistonite.org/view/taoplusplus/asr
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/asr
   - https://github.com/taoplusplus/asr
   - 2022-09-03
 - botw_all_shrines
-  - celer route https://celer.pistonite.org/view/cobchamp/botw_all_shrines
+  - celer route https://celer.itntpiston.app/#/gh/cobchamp/botw_all_shrines
   - https://github.com/cobchamp/botw_all_shrines
   - 2023-02-17
 - asroutes (Bings)
@@ -145,54 +148,56 @@ routes/AS
 ## 100 Percent
 routes/100
 
+- [7.4.docx](routes/100/7.4.docx)
+- [1.8+ Hundo IST Detailed Instructions.pptx](routes/100/1.8+%20Hundo%20IST%20Detailed%20Instructions.pptx)
+- [100_EXチャート2024_10.xlsx](routes/100/100_EXチャート2024_10.xlsx)
+- [BotW 100_ Version 8.1.Johnny (route by SpecsNStats).xlsx](routes/100/BotW%20100_%20Version%208.1.Johnny%20(route%20by%20SpecsNStats).xlsx)
+- [Granatus 20_05_2022 (100_ Route).xlsx](routes/100/Granatus%2020_05_2022%20(100_%20Route).xlsx)
+- [Hundo IST.pptx](routes/100/Hundo%20IST.pptx)
+- [Hundo Routes.docx](routes/100/Hundo%20Routes.docx)
+- [hundo_ist_wmc_sena.txt](routes/100/hundo_ist_wmc_sena.txt)
+- [hundo_ist_wmc.txt](routes/100/hundo_ist_wmc.txt)
 - 100
-  - celer route https://celer.pistonite.org/view/MrPancakeTurtle/100
+  - celer route https://celer.itntpiston.app/#/gh/MrPancakeTurtle/100
   - https://github.com/MrPancakeTurtle/100
   - 2023-11-04
-- 7.4.docx
-- 1.8+ Hundo IST Detailed Instructions.pptx
-- 100_EXチャート2024_10.xlsx
-- BotW 100_ Version 8.1.Johnny (route by SpecsNStats).xlsx
 - corrupted.granatus
-  - celer route https://celer.pistonite.org/view/taoplusplus/corrupted.granatus
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/corrupted.granatus
   - https://github.com/taoplusplus/corrupted.granatus
   - 2022-11-28
-- Granatus 20_05_2022 (100_ Route).xlsx
 - granatus.theglitch
-  - celer route https://celer.pistonite.org/view/taoplusplus/granatus.theglitch
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/granatus.theglitch
   - https://github.com/taoplusplus/granatus.theglitch
   - 2022-08-01
-- Hundo IST.pptx
-- Hundo Routes.docx
-- hundo_ist_wmc_sena.txt
-- hundo_ist_wmc.txt
 - hundo-182
   - celer route https://celer.pistonite.org/view/Mickystam521/hundo-182
   - https://github.com/Mickystam521/hundo-182
   - 2025-12-08
 - omegabow
-  - celer route https://celer.pistonite.org/view/sobolews/omegabow
+  - celer route https://celer.itntpiston.app/#/gh/sobolews/omegabow
   - https://github.com/sobolews/omegabow
   - 2023-06-22
 - omegeb
-  - celer route https://celer.pistonite.org/view/sobolews/omegeb.git
+  - celer route https://celer.itntpiston.app/#/gh/sobolews/omegeb.git
   - https://github.com/sobolews/omegeb.git
   - 2024-03-22
+  - Missing bundle.json
 - omegeb-minghaob
-  - celer route https://celer.pistonite.org/view/minghaob/omegeb
+  - celer route https://celer.itntpiston.app/#/gh/minghaob/omegeb
   - https://github.com/minghaob/omegeb
   - 2024-03-22
 
 #### EX
 
 - botw100-EX
-  - celer route https://celer.pistonite.org/view/taoplusplus/botw100-EX
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/botw100-EX
   - https://github.com/taoplusplus/botw100-EX
   - 2023-02-20
 - botw100-EX-coensi
-  - celer route https://celer.pistonite.org/view/Coensi/botw100-EX
+  - celer route https://celer.itntpiston.app/#/gh/Coensi/botw100-EX
   - https://github.com/Coensi/botw100-EX
   - 2022-04-17
+  - Bad route render
 - botw100ex
   - celer route https://celer.pistonite.org/view/savage13/botw100ex
   - https://github.com/savage13/botw100ex
@@ -202,11 +207,12 @@ routes/100
 routes/MS
 
 - botw_master_sword_restricted
-  - celer route https://celer.pistonite.org/view/cobchamp/botw_master_sword_restricted
+  - celer route https://celer.itntpiston.app/#/gh/cobchamp/botw_master_sword_restricted
   - https://github.com/cobchamp/botw_master_sword_restricted
   - 2022-05-08
+  - Missing bundle.json
 - msr
-  - celer route https://celer.pistonite.org/view/taoplusplus/msr
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/msr
   - https://github.com/taoplusplus/msr
   - 2022-08-23
 - MSR_NoSCW
@@ -219,22 +225,22 @@ routes/MS
 ## Best Ending
 routes/BE
 
-- Best Ending Route Document v4.docx
-- Best Ending Route.docx
+- [Best Ending Route Document v4.docx](routes/BE/Best%20Ending%20Route%20Document%20v4.docx)
+- [Best Ending Route.docx](routes/BE/Best%20Ending%20Route.docx)
+- [Route_BE.json](routes/BE/Route_BE.json)
+- [Route_BE_v2.json](routes/BE/Route_BE_v2.json)
 - bestending
-  - celer route https://celer.pistonite.org/view/taoplusplus/bestending
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/bestending
   - https://github.com/taoplusplus/bestending
   - 2022-08-23
-- Route_BE.json
-- Route_BE_v2.json
 
 ## Trial of the Sword
 routes/TotS
 
-- AntiMS' Guide to Skew.txt
-- BotW Trial of the Sword (Any Restricted) - Normal Mode.txt
-- TotS_Chest_List.txt
-- Tots.PNG
+- [AntiMS' Guide to Skew.txt](routes/TotS/AntiMS'%20Guide%20to%20Skew.txt)
+- [BotW Trial of the Sword (Any Restricted) - Normal Mode.txt](routes/TotS/BotW%20Trial%20of%20the%20Sword%20(Any%20Restricted)%20-%20Normal%20Mode.txt)
+- [TotS_Chest_List.txt](routes/TotS/TotS_Chest_List.txt)
+- [Tots.PNG](routes/TotS/Tots.PNG)
 
 ## Bug Limit Categories
 routes/BugLimit
@@ -242,7 +248,7 @@ routes/BugLimit
 ### Any Percent
 
 - bug-limit-any
-  - celer route https://celer.pistonite.org/view/taoplusplus/bug-limit-any
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/bug-limit-any
   - https://github.com/taoplusplus/bug-limit-any
   - 2022-09-04
 
@@ -252,8 +258,8 @@ routes/BugLimit
   - https://github.com/frozenbnk/100-Bug-Limit
   - 2025-07-07
 - 100-BugLimit-2.1
-  - celer route https://celer.pistonite.org/view/frozenbnk/100-BugLimit-2.1.git
-  - https://github.com/frozenbnk/100-BugLimit-2.1.git
+  - celer route https://celer.pistonite.org/view/frozenbnk/100-BugLimit-2.1
+  - https://github.com/frozenbnk/100-BugLimit-2.1
   - 2025-08-20
 - 100-Bug-Limit-2.2
   - celer route https://celer.pistonite.org/view/frozenbnk/100-Bug-Limit-2.2
@@ -264,7 +270,7 @@ routes/BugLimit
   - https://github.com/Paperzlel/100-BugLimit
   - 2024-08-12
 - granatus-slow-the-glitch
-  - celer route https://celer.pistonite.org/view/31PNMR/granatus-slow-the-glitch
+  - celer route https://celer.itntpiston.app/#/gh/31PNMR/granatus-slow-the-glitch
   - https://github.com/31PNMR/granatus-slow-the-glitch
   - 2023-01-03
 - Hundo-EX-Glitchless
@@ -272,27 +278,28 @@ routes/BugLimit
   - https://github.com/31JSON/Hundo-EX-Glitchless
   - 2025-12-18
 - hundo-ex-mgr-omegeb-arrowless-story-notceler
-  - celer route https://celer.pistonite.org/codeberg.org/31JSON/hundo-ex-mgr-omegeb-arrowless-story-notceler.git
-  - https://codeberg.org/31JSON/hundo-ex-mgr-omegeb-arrowless-story-notceler.git
+  - celer route https://restite.org/notceler-botw/?codeberg=31JSON/hundo-ex-mgr-omegeb-arrowless-story-notceler/raw/main.yaml
+  - https://codeberg.org/31JSON/hundo-ex-mgr-omegeb-arrowless-story-notceler
   - 2025-07-27
 
 ## Category Extensions
 routes/CE
 
-- BOTW Category Extensions Routes - Sheet1.xlsx
+- [BOTW Category Extensions Routes - Sheet1.xlsx](routes/CE/BOTW%20Category%20Extensions%20Routes%20-%20Sheet1.xlsx)
 
 ### All Dog Treasures
 routes/CE/AllDogTreasures
 - adt
-  - celer route https://celer.pistonite.org/view/AureusSRL/celer_routes/
+  - celer route https://celer.itntpiston.app/#/gh/AureusSRL/celer_routes/projects/adt
   - https://github.com/AureusSRL/celer_routes/
   - 2023-06-05
+  - Broken
 
 ### All Kass Quests
 routes/CE/AllKassQuests
 
 - botwce_all_kass_quests
-  - celer route https://celer.pistonite.org/view/cobchamp/botwce_all_kass_quests
+  - objmap route
   - https://github.com/cobchamp/botwce_all_kass_quests
   - 2022-09-06
 
@@ -303,11 +310,7 @@ routes/CE/AllKilonMedals
   - celer route https://celer.pistonite.org/view/dotzo/akm
   - https://github.com/dotzo/akm
   - 2024-05-25
-- akm-tao
-  - celer route https://celer.pistonite.org/view/taoplusplus/akm
-  - https://github.com/taoplusplus/akm
-  - 2023-02-24
-- AKM Early Game Route + WMC Instructions.pptx
+- [AKM Early Game Route + WMC Instructions.pptx](routes/CE/AllKiltonMedals/AKM%20Early%20Game%20Route%20+%20WMC%20Instructions.pptx)
 
 ### All Minigames
 routes/CE/AllMinigames
@@ -322,14 +325,14 @@ routes/CE/AllMinigames
 ### All Towers
 routes/CE/AllTowers
 
-- All_Towers_Tuto.docx
+- [All_Towers_Tuto.docx](routes/CE/AllTowers/All_Towers_Tuto.docx)
 
 ### Korok Collection
 #### All
 CE/Korok/All
 
 - botwce_all_koroks
-  - celer route https://celer.pistonite.org/view/cobchamp/botwce_all_koroks
+  - Objmap route
   - https://github.com/cobchamp/botwce_all_koroks
   - 2025-02-21
 
@@ -341,7 +344,7 @@ routes/CE/Korok/100
   - https://github.com/Lathena7/100korokceler
   - 2025-07-14
 - korok100
-  - celer route https://celer.pistonite.org/view/taoplusplus/korok100
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/korok100
   - https://github.com/taoplusplus/korok100
   - 2022-11-11
 
@@ -355,7 +358,7 @@ routes/CE/ShrineCollection
 #### Akkala
 #### Central
 - botwce_shrine_collection/Central
-  - celer route https://celer.pistonite.org/view/cobchamp/botwce_shrine_collection/
+  - celer route https://celer.itntpiston.app/#/gh/cobchamp/botwce_shrine_collection/
   - https://github.com/cobchamp/botwce_shrine_collection/
   - 2022-10-25
 #### Dueling Peaks
@@ -380,7 +383,7 @@ routes/CE/ShrineCollection
 routes/CE/ShrineCollection/hebra
 
 - hebra
-  - celer route https://celer.pistonite.org/view/taoplusplus/hebra
+  - celer route https://celer.itntpiston.app/#/gh/taoplusplus/hebra
   - https://github.com/taoplusplus/hebra
   - 2022-12-06
 #### Lake
@@ -441,7 +444,7 @@ routes/CE/MSDT
 routes/CE/ChampionPercent
 
 - botwce_champion_restricted
-  - celer route https://celer.pistonite.org/view/cobchamp/botwce_champion_restricted
+  - celer route https://celer.itntpiston.app/#/gh/cobchamp/botwce_champion_restricted
   - https://github.com/cobchamp/botwce_champion_restricted
   - 2022-08-05
 
@@ -449,7 +452,7 @@ routes/CE/ChampionPercent
 routes/CE/Marriage
 
 - marriage
-  - celer route https://celer.pistonite.org/view/savage13/marriage/
+  - celer route https://celer.itntpiston.app/#/gh/savage13/marriage/
   - https://github.com/savage13/marriage/
   - 2022-05-11
 
@@ -459,7 +462,7 @@ routes/CE/Marriage
 routes/CE/Bread
 
 - botwce_bread
-  - celer route https://celer.pistonite.org/view/cobchamp/botwce_bread
+  - objmap route
   - https://github.com/cobchamp/botwce_bread
   - 2022-09-06
 
@@ -472,7 +475,7 @@ routes/CE/Bread
 ### Triforce Percent
 routes/CE/Triforce
 
-- Triforce_ V1.5.docx
+- [Triforce_ V1.5.docx](routes/CE/Triforce/Triforce_%20V1.5.docx)
 
 ### All Goddess Statues
 routes/CE/AllGoddessStatues
@@ -502,7 +505,7 @@ routes/CE/AllGoldRupees
 routes/CE/BestDogEnding
 
 - botwce_best_dog_ending
-  - celer route https://celer.pistonite.org/view/cobchamp/botwce_best_dog_ending
+  - celer route https://celer.itntpiston.app/#/gh/cobchamp/botwce_best_dog_ending
   - https://github.com/cobchamp/botwce_best_dog_ending
   - 2022-09-08
 
@@ -510,7 +513,7 @@ routes/CE/BestDogEnding
 routes/CE/WeaponConnoisseur
 
 - botwce_weapon_connoisseur
-  - celer route https://celer.pistonite.org/view/cobchamp/botwce_weapon_connoisseur
+  - celer route https://celer.itntpiston.app/#/gh/cobchamp/botwce_weapon_connoisseur
   - https://github.com/cobchamp/botwce_weapon_connoisseur
   - 2022-09-12
 
@@ -521,22 +524,24 @@ routes/CE/AllHoes
   - celer route https://celer.pistonite.org/view/rhomboidal1/all-hoes-botw
   - https://github.com/rhomboidal1/all-hoes-botw
   - 2025-08-14
+  - Failed to build
 - BotW-All-Hoes
   - celer route https://celer.pistonite.org/view/Cephla1/BotW-All-Hoes
   - https://github.com/Cephla1/BotW-All-Hoes
   - 2024-07-13
 
 ### Misc
-- BeetleShops.png
+- [BeetleShops.jpg](misc/BeetleShops.jpg)
 - botw-boilerplate
-  - celer route https://celer.pistonite.org/view/cobchamp/botw-boilerplate
   - https://github.com/cobchamp/botw-boilerplate
   - 2024-06-24
 - botw-routes
+  - Piston routes, needs to be incorporated in AS, MSR plus EX categories
 - botwce_material_collection_insects
-  - celer route https://celer.pistonite.org/view/cobchamp/botwce_material_collection_insects
+  - celer route https://celer.itntpiston.app/#/gh/cobchamp/botwce_material_collection_insects
   - https://github.com/cobchamp/botwce_material_collection_insects
   - 2022-05-11
 
 #### Versions:
+ - 2026-05-19 Fix route links, add route docs
  - 2026-05-19 Initial Version

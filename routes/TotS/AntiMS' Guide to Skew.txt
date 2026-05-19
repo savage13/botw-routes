@@ -1,0 +1,556 @@
+* License
+* Introduction
+* Version History
+* What Is Skew?
+   * What Is Skew Good For?
+* Which Controller Should I Use?
+* Obtaining Skew
+   * Before Obtaining Skew
+   * Suitable Ground
+   * Direction
+   * Doing It
+   * Locations
+      * Planned
+      * Improvised
+* Checking Your Skew
+   * Prerequisites
+   * Steps
+* Clipping With Skew
+   * The Basic Method
+      * Prerequisites
+      * Steps
+      * Pros
+      * Cons
+      * Resources
+   * ESC
+      * Prerequisites
+      * Steps
+      * Pros
+      * Cons
+      * Resources
+   * Clipping From A Windbomb
+      * Prerequisites
+      * Steps
+      * Pros
+      * Cons
+      * Resources
+* Common Issues
+   * Beginner Difficulties
+      * Insufficiently Strong Skew
+      * Not Unequipping Your Shield Quickly Enough
+   * "Strange" Skew
+      * "Turn-y" Skew
+      * Skew That Is Too Strong
+      * Greater-Than-90° Skew
+   * Hard Walls
+      * Some Walls Have Two Layers Of Collision
+      * Some Walls Are Just Harder To Clip Through Than Others
+   * Other Issues
+      * Ragdoll Corruption
+* Troubleshooting
+   * Try To Work Around It
+   * Try Copying What Someone Else Does Exactly
+   * Seek Help
+* Alternatives To Skew Clipping
+   * Instant Shield Pull Clips
+      * Prerequisites
+      * Steps
+      * Pros
+      * Cons
+      * Resources
+   * Others
+* General Resources
+* Thanks
+* Appendices
+   * Appendix 1 - Why Are Hard Walls Hard?
+      * Theory 1: IEEE-754 Floating Point Number Precision
+      * Theory 2: Varying Skew Quality And/Or Ragdoll Corruption
+* Feedback
+
+License
+=======
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License. That means:
+
+You are free to:
+
+* Share - copy and redistribute the material in any medium or format
+* Adapt - remix, transform, and build upon the material for any purpose, even commercially.
+
+Under the following conditions:
+
+* Attribution - You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+* ShareAlike - If you remix, transform, or build upon the material, you must distribute your contributions under the same license as the original.
+* No additional restrictions - You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+Notices:
+
+* You do not have to comply with the license for elements of the material in the public domain or where your use is permitted by an applicable exception or limitation.
+* No warranties are given. The license may not give you all of the permissions necessary for your intended use. For example, other rights such as publicity, privacy, or moral rights may limit how you use the material.
+
+For more information, see: https://creativecommons.org/licenses/by-sa/4.0/
+
+For the full text of the license, please see: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+Introduction
+============
+Welcome to AntMS' Guide to Skew. I'm AntiMS, current record holder for the Legend of Zelda: Breath of the Wild Trial of the Sword Unrestricted 100% (both master mode and normal mode) individual level speedrun categories. These are categories which require using skew a lot. This document just collects what I've learned over time about shield skew and shield skew clipping.
+
+Don't feel like you have to read this document top-to-bottom (unless of course you want to.) I've tried generally to always reference other sections with more information where appropriate, so if you start somewhere in the middle but need more information about something related, there should be a note telling you where in this document to find that additional information.
+
+I'm no expert on skew bounces, so those won't be covered, but if you're trying to get through (roughly) vertical walls with skew, I'm hoping this guide can help.
+
+Also, I rarely use skew clips outside of Trial of the Sword and occasionally shrines. So most of this article will be a little bit narrow in focus -- specifically to those cases.
+
+Version History
+===============
+* 1.0 - The first version of of this guide.
+
+What Is Skew?
+=============
+The Legend of Zelda: Breath of the Wild has an intended mechanic called "shield surfing." If while in mid air (for instance, just after jumping while on the ground) you hold your shield button (ZL) and tap A, Link will place his shield on his feet and land on it, allowing him to "snowboard" down slopes.
+
+When shield surfing on a sloped surface the game keeps Link's body oriented perpendicular to the surface on which he is shield surfing. Thus, if shield surfing westward down a 15° decline, Link will be oriented 15° from vertical to the west. His shield will also be tipped 15° relative to exactly horizontal. This orientation ("15° from vertical toward the west") is stored in memory and persists even after you dismount your shield.
+
+When you have skew, you can tell you have skew by the fact that when mounting your shield in order to surf, Link's model "flicks" to one side for just a couple of frames. (See "Checking Your Skew" below.) However, if you don't unequip your shield before making contact with the ground, you'll lose your skew.
+
+Skew can be "strong" or "weak." The strength of skew is a continuum. "Strong" skew is obtained by landing on a very steeply-sloped surface and when you have strong skew the "flick" that happens while mounting your shield brings Link more than roughly 65° from straight vertical. Weak skew is obtained by landing on shallower inclines and can be close to imperceptible when mounting your shield.
+
+And, skew is always in a particular direction. One can have "north-leaning" skew or "south-east-leaning skew" or skew in any other compass direction depending which direction the slope they obtained skew from was leaning. I'll mostly be using cardinal directions for examples in this document, but it's just as possible to use it in non-cardinal directions if the wall you wish to clip through is not oriented in a cardinal direction.
+
+And, there are some other weirder qualities of skew that are more than just strength and direction, but those will be covered later. (See "'Strange' Skew" below.)
+
+Skew is mostly preserved through many surprising events such as save loads, map loads (such as entering or exiting a shrine or Trial of the Sword,) game overs, and returning to the title screen. (Though some things can make some interesting modifications to your skew. For examples, see "'Strange' Skew" below.) About the only ways to truly lose skew are to land on your shield on a surface which doesn't have the desired slope (particularly on flat ground) or to exit or crash the game.
+
+What Is Skew Good For?
+----------------------
+Skew can be used for "skew bounces" which I won't go into in depth (and don't even know much about them, actually,) but it involves obtaining skew while in bullet time and then jumping and unequipping your shield before landing. Kleric has a good video tutorial on these on YouTube: https://youtu.be/6S1nCZgGPSI?t=669
+
+This document will focus on the other main use of skew: clipping through vertical (or nearly-vertical) walls. If you have skew in the right direction and of the right strength, you can use it to pass through a wall very quickly. There are a couple of different ways to use skew to do so. One is called "shield skew clipping" (or just "shield clipping" or "skew clipping" for short -- I tend to use "skew clipping" mostly.) The other is "extended shield skew clipping" (or "ESC" for short.) Regular skew clips are less consistent but faster and come with less risk (in my experience) of losing your skew, but ESCs work better if you're having trouble with a wall (some are more difficult than others -- see "Hard Walls" below) or have bad (weak or "weird" -- see "'Strange' Skew" below) skew.
+
+Which Controller Should I Use?
+==============================
+Great question, actually. This all can be done with separate Joycons, but I find it quite awkward. I found using them with the controller grip made it easier, but it's still a bit difficult to get to d-pad left quickly enough which (as you'll see below) is pretty necessary.
+
+I wish I could recommend the Switch Pro Controller without caveats. It's mostly a great controller, but the d-pad has a critical design defect wherein it receives incorrect inputs. Pressing one d-pad button often registers as an input on a different d-pad button, which is rarely an issue in casual play but can be a problem for several glitches and exploits in Breath of the Wild including shield skew.
+
+I personally use a Switch Pro Controller modified to mitigate the manufacturer's defect. The way in which I fixed this involves opening the case of the controller and placing a few layers of simple Scotch tape in a particular place in the controller just under the center of the cross-shaped d-pad piece. The video guide I used to learn the specifics was this one: https://youtu.be/Kaw_CMd8eM4 . It's... much better, but not perfect. There are virtually no misinputs at this point, but d-pad down is quite a bit less responsive than the other buttons which isn't entirely optimal for whistle sprinting. I could probably improve things by taking it apart again and adjusting things or by fixing it in the following method, but I haven't taken the time to mess with that:
+
+The other method to fix this defect that I know of requires 3d-printing a replacement cross-shaped d-pad piece and installing it. This also requires disassembling the controller, but may produce better, less fiddly results than the Scotch tape method depending on the quality of the print. I can't personally vouch for this method because I haven't tried it myself, but more info on that method can be found here: https://www.thingiverse.com/thing:4634168 .
+
+I can't speak to what if any third-party controllers might be worth trying just due to lack of experience with any third-party controllers. Nor have I experimented with remapping inputs. The rest of this guide will be written for a Switch Pro Controller with no remapping done. (So, for instance, X will be used for the button that makes Link jump and ZR for the button to draw and aim Link's bow.) If you're using a different controller or have any buttons remapped, you may have to translate this guide for your own setup.
+
+Obtaining Skew
+==============
+So you're ready to try it out. Obtaining skew is in theory as simple as finding a sloped surface and landing on it while you're on your shield, but there are multiple considerations to keep in mind when obtaining skew.
+
+Before Obtaining Skew
+---------------------
+There are a couple of things you might consider doing before attempting to get skew. First is to cancel any skew you currently have by shield-surf-landing on flat ground. This can reduce the likelihood of a "bonk" (see the final paragraph of "Doing It" below.) Second, you might want to take steps to cancel ragdoll corruption (see "Ragdoll Corruption" below.)
+
+Suitable Ground
+---------------
+I've used the term "ground" to describe sloped surfaces on which to obtain skew, but really you want very strongly sloped, nearly-vertical surfaces. Closer to "walls" than "ground", really. Perfectly vertical surfaces will not work however. The surface needs at least a little bit of slope in order to be able to land on it. Also, it's possible to get skew on individual polygons of an object such as on the side of certain trees or on the corner of a square bomb. (See "Improvising" below.) Though the smaller the polygon you're trying to land on, the trickier it is to hit it correctly to obtain skew.
+
+Direction
+---------
+Which compass direction you want to obtain skew in depends on what wall you want to clip through. Specifically, you want skew leaning away from the wall you want to clip through. So, for instance, if you want to clip eastward through a wall, you'll have to have west-leaning skew which you'd obtain from ground which slopes down to the west.
+
+If you're trying to determine directions in Trial of the Sword or in a shrine, go to the menu screen (with the "-" button) and take note of which direction your yellow arrow marker is facing. If it's facing upward, for instance, you're facing north. Even though that arrow doesn't move with you when you're in Trial of the Sword or a shrine, it does turn as you turn and the direction it is pointing always accurately indicates the direction you are facing.
+
+Doing It
+--------
+There are a few main ways of getting skew from a slope and each works in different situations. The first (and the one I use by far most) is to stand back from the slope on flat ground at the "bottom" of the slope facing the slope and then as you hold ZL and walk toward it, jump (with X) and activate the shield surf animation by tapping A (without ever letting go of ZL). If performed correctly, link should jump forward from the ground, mount his shield with a forward-rolling animation, land on the slope, immediately and automatically dismount his shield (because the game has logic to cause Link to dismount immediately if he stops moving while trying to surf up an incline,) and then (unless you're on a pretty shallow slope) slide backwards down the slope on his feet (not on his shield.) This has Link on his shield making contact with the slope just long enough for the game to "register" his orientation on the slope and save his skew. You probably won't visibly see him flick backwards during the process of obtaining skew, but seeing him lean while obtaining skew is unnecessary to obtaining skew.
+
+A second way to get skew is to walk up a slope until you're in position immediately above the point where you wish to land your shield and (before you start skidding backwards on your feet) jump directly up the air and use ZL+A to mount your shield. This can be useful if the point where you need to land is very low and close to the ground. You'll often see this method used on the slope up to the platform directly in front of a shrine before using an ESC to get through the doors of one of the shrines on the Great Plateau. If performed correctly, Link should jump directly upward (with no forward momentum,) place his shield on his feet, come back down and land on his shield, immediately and automatically dismount the shield (for the same reason as in the previous paragraph,) and skid down the slope on his feet.
+
+A variation on the first method involves unequipping your shield on exactly the correct frame while in contact with the slope rather than relying on the game to automatically cause you to dismount your shield. When done correctly, you should ragdoll. This can be useful if you're trying to get skew off of an extremely small polygon, such as off of the corner of a square bomb. But even getting skew off of a polygon as large as the ones found on the side of certain trees (see "Improvising" below) generally doesn't require this manual-dismounting method in my experience.
+
+Sometimes, when trying to get skew, depending where you're obtaining it and how, you may "bonk" -- that is smack into the wall with a comical "splat" animation and fall backwards onto your butt -- rather than land successfully and immediately dismount your shield. (I often get this when obtaining skew on the side of a portal platform in a rest floor in Trial of the Sword.) I think this happens a little more commonly when you already have some amount of skew (even if it's insufficiently strong for clipping reliably through walls) in the direction you're trying to obtain skew (or stronger skew.) This doesn't necessarily mean that your attempt to get skew failed, but it's very hard to tell without checking whether you have skew afterward. (See the section "Checking Your Skew" below.)
+
+Locations
+---------
+This is just a list of some of the places I find most reliable for getting skew, divided into a list of "planned" and "improvised" locations. Improvised locations are for when you need to find skew where you are and don't have the luxury of going to a place where it's very easy and reliable to get skew. Again, since I mostly use skew in Trial of the Sword, it will be a little skewed toward locations which are applicable to that.
+
+### Planned
+* Inside Monya Toma Shrine - Very reliable and shown in many YouTube tutorials on skew. Has slopes in all of the cardinal directions on the walls.
+* Inside Keo Ruug Shrine - My default go-to place to get skew before starting a Trial of the Sword speedrun, largely because it's close to the entrance to Trial of the Sword. Reliable, has slopes in all cardinal directions on the large pillars near the monk pedestal at the exit. Has the downside that you have to beat or cheese (I usually use a wind bomb to get past the puzzle) the shrine to get to where you can get skew. The trick is to land on the slopes as low as possible without missing the slope and landing below it. You might have to vary where you jump from until you've got the hang of it, but once you've got it, you can use the seams on the floor as a guide in the future.
+* Outside Shrines - The slopes up to the platform in front of the entrance to a shrine are good places to get skew especially if using an ESC to get through the closed doors of a shrine before getting the Central Plateau Shiekha tower.
+* Rest Floors in Trial of the Sword - The pedestals which hold exit portals in rest floors have sloped sides which are great for getting east- or west-leaning skew.
+* Master Sword Room in Trial of the Sword - The pedestals on the floating platforms where the Master Sword is found for the beginning and middle trials are quite similar to those in the rest floors and can be used to get skew. The trick I use is to back up until I'm on ground that's a little lower and then while holding forward and ZL, hit X and A immediately after.
+* The stone just northeast of the Master Sword pedestal - There is a small, natural stone resting just northeast of the Master Sword pedestal in Korok Forest. If you need to get skew between trials quickly, this can be a good option. This is one place where many seem to prefer to use the second method of obtaining skew (the one which does not involve any forward momentum) but I personally use the first most often when getting skew here.
+
+### Improvised
+* The Side of a Tree - It's a little hard to put into words how to do this. It requires a "regular" non-fellable tree in the correct orientation. The south-western-most non-fellable tree in the first room of the Beginning Trials is good for getting east-leaning skew. Also there are a good number of the right kind of trees in the Korok Forrest.
+* Tilted Cryonis Blocks - This is a good option when out-of-bounds in Trial of the Sword. If I'm trying to get into the final room of the Beginning Trials and have lost skew, my usual method for getting in is by creating an ice block on a sloped surface of water and doing a shield surf jump onto the "top" (which is now sharply slanted) as it's still growing to get south-leaning skew.
+* Rocks - There's not a lot of advice that can be given on this, really. Rocks just tend to be irregularly-shaped with lots of polygons at various orientations. Basically you just want to find the right polygon and try to land on it. If you have trouble, maybe switch up whether you're using the first or second method in the "Doing It" section above. I sometimes use the second method to obtain west-leaning skew near the top of the south-eastern spire in the 9th floor of the Beginning Trials.
+* Bombable Rocks - In particular in the 11th floor of the final trials, there are bombable rocks that I sometimes use to get west-leaning skew. I usually have more luck with the first method in the "Doing It" section above starting from very close to (in contact with, even) the rocks.
+* Outside Rest Floors - Another option when out-of-bounds in Trial of the Sword. There are strange-looking "mounds" of dirt outside of most rest floors, and *some* of those have slopes on *some* of their sides that are appropriate for getting pretty decent skew. For instance, the north-eastern mound outside the 6th floor of the Final Trials has a good slope for getting south-leaning skew.
+* Snow Drifts - Out-of-bounds in Trial of the Sword, some of the snowy levels have snow which extends outside. For some of these rooms, the snow drops off out-of-bounds pretty sharply at pretty much the right slope. The trick is to land as low as possible without missing the slope.
+* Giant Skulls - The giant skulls that monsters sometimes camp out in often times have a lot of nice varying geometry. Usually you can find at least a polygon or two off of which to get good skew.
+* The Corner of a Square Bomb - This is very very tricky in my experience, but there are a couple of example videos of folks doing this here: https://youtu.be/4V8ZiQg7Q5g and here: https://twitter.com/chrysalisChloe/status/1036519431763976193 .
+* Anywhere! - Just keep an eye out for the right kind of slope. Once you've done this a few times, you'll have a good idea what to look for. There are definitely places where it's pretty much impossible to get good skew except on the corner of a square bomb, though. Sometimes a skew clip isn't your best option, but there are other ways to get through vertical walls that don't require skew. See "Alternatives To Skew Clipping" below.
+
+Checking Your Skew
+==================
+It's not always clear after attempting to get skew whether it worked or not. In order to know for sure, you'll have to check whether you've got the skew you want. Fortunately, it's not difficult.
+
+Prerequisites
+-------------
+* Suspected skew.
+* Any shield equipped.
+* Flat or downward-sloping ground (when facing perpendicular to your suspected skew direction.)
+
+Steps
+-----
+1. Orient yourself on the map facing roughly perpendicular to the direction in which you suspect you may have skew on flat ground (or higher ground than the ground in front of you) without any obstacles in front of you with the camera directly behind you.
+2. Jump into a forward-roll shield surf by holding ZL, holding the left stick forward, and tapping X and A immediately after.
+3. As soon as possible (well before landing and well before the "flick",) use your quick menu to unequip your shield with d-pad left, left on the right stick as many times as necessary to select "unequip shield," and letting up on d-pad left.
+4. Watch closely. Frame buffer (I'd recommend with d-pad left) if you find buffering helpful. When you flick to the side, if you rotate over about 65°, you have decently good, strong skew. Any less and it may still work (or you may need to resort to ESCs,) but may not be quite as effective or consistent as stronger skew.
+
+Really about the only thing which can go wrong in the course of checking your skew is to land on your shield, altering or canceling out your skew. As long as this doesn't happen, you should be able to check your skew as many times as you like. Checking your skew shouldn't weaken or otherwise alter your skew as long as you don't end up landing on your shield.
+
+Clipping With Skew
+==================
+Now that you have skew and know it's "strong," you should be able to use it to clip through walls.
+
+The Basic Method
+----------------
+The most straightforward way to clip through a wall with skew is with a regular "skew clip" (aka "shield skew clip" or "shield clip.")
+
+The steps are quite similar to the steps for checking your skew (see "Checking Your Skew" above,) except you'll be jumping straight into a wall while doing pretty much the exact same inputs:
+
+### Prerequisites
+* "Strong" skew leaning in the direction opposite direction you'll be clipping through the wall.
+* Any shield equipped.
+* A wall to clip through.
+
+### Steps
+1. Orient yourself facing a wall with skew leaning in the opposite direction (so, if you're trying to clip east through a wall, face east toward the wall with west-leaning skew) about 1.5 times Link's height from the wall with the camera directly behind you. (If you have trouble with a clip, try varying your distance from the wall. Also see "Common Issues" and "Troubleshooting" below.)
+2. Jump into a forward-roll shield surf against the wall by holding ZL, holding the left stick forward, and tapping X and A immediately after.
+3. As soon as possible (before making contact with the wall, preferably, but as long as it's before the "flick" it will likely work anyway,) use your quick menu to unequip your shield with d-pad left, left on the right stick as many times as necessary to select "unequip shield," and letting up on d-pad left.
+4. If you did the above correctly, there aren't any issues with your skew (again, see "Common Issues" and "Troubleshooting" below,) it's not a particularly difficult or inconsistent wall, and you have a bit of luck on your side, you should magically pop through the wall and be on the other side before you land on your feet.
+
+### Pros
+* Fast - Assuming you have good skew, this is generally at least a little faster than ESC. Perhaps in some pretty rare cases not as fast as clipping from a windbomb depending on the specific situation.
+* Consistent - Again, assuming you have good skew, it's not too difficult to get consistent with most clips, especially if you use precise setups (precisely positioning yourself based on marks on the ground and getting precise orientation by aiming your bow or aiming with the throw-melee-weapon method.)
+* Easy to learn - Requires less time learning and practicing to pull off.
+* Preserves skew - It's pretty easy with this method to use it and not lose skew in the process, allowing you to re-use the same skew for multiple walls without re-obtaining skew between.
+* Retryable - If you fail to get through the wall, you can typically retry as many times as you like as long as you don't land on your shield.
+
+### Cons
+* Requires good skew - It's not as likely to work with less-than-ideal skew as ESC or (in my experience) clipping from a windbomb is.
+* "Fiddly" - It can require a fair amount of experimentation to figure out how to consistently get through any particular "difficult" wall.
+* Wall-specific - It pretty much just can't be made to work (at least consistently) on some walls. Some of these walls have two layers of collision. Some aren't perfectly vertical or have complex geometry. Others are just harder to get through because they're harder to get through. (See "Hard Walls" below.)
+
+### Resources
+* https://youtu.be/Z2vPSXYv5DI - Linkus7's tutorial for skipping Trial of the Sword using skew clipping. The main video I used to learn shield clipping.
+* https://youtu.be/eG65Z5FOCUE - Another more detailed video I've referred to several times by Franklin.
+* https://www.reddit.com/r/speedrun/comments/9cj0r6/major_discovery_in_the_legend_of_zelda_breath_of/ - PuppetMaster9's post on Reddit about the discovery of shield skew back when it was still a new glitch.
+
+ESC
+---
+ESC ("extended shield clip") is a slightly more advanced technique for getting through walls with skew which can be very useful when you're in a bind. Particularly if you have weak skew or the wall you're trying to get through is more difficult than most.
+
+ESCs are a way to "double-skew-clip" (or even "triple-skew-clip" or more.) They start out like a regular skew clip, but just a couple of frames after you unequip your shield, you re-equip your shield and do another shield surf forward roll. This allows you to "double-apply" your skew, clipping through with roughly twice the clipping power of a regular skew clip.
+
+Before going through the actual steps, we need to talk a little bit more about the "flick" - the glitchy, short-lived rotation of your character model in the direction in which you have skew. When checking your skew, the flick lasts for three frames. The second of these three frames is the most displaced from upright. The first frame is "on the way" to fully displaced, and the final frame is on the way back to fully upright. So, if you have 80° skew, the first frame of the flick might have you at a 40° angle, the next at an 80° angle, the third frame at a 40° angle again (this third one is the one I'm referring to as "on the way back") and on the next frame, the flick is already fully over and you're back at fully upright (0°.)
+
+The first and third frames of these three frames which I'll call the "on the way to" and "on the way back" frames are the important ones for ECSs. In the process of doing an ESC, you'll have to pause via the shield quick menu on that "on the way back" frame. If you miss that frame, you'll have to abort your ESC attempt and start over and try again.
+
+Now, on to the steps. These make it seem more complex than it actually is in practice, but should cover most edge cases that you might encounter.
+
+### Prerequisites
+* Skew (not necessarily very strong skew) leaning opposite the direction you wish to clip. The direction will be more forgiving with an ESC than with a regular skew clip.
+* Any shield equipped.
+* A wall to clip through.
+
+### Steps
+1. Orient yourself facing a wall with skew leaning in the opposite direction (so, if you're trying to clip east through a wall, face east toward the wall with west-leaning skew) about 1.5 times Link's height from the wall with the camera directly behind you.
+2. Jump into a forward-roll shield surf against the wall by holding ZL, holding the left stick forward, and tapping X and A immediately after.
+3. Frame buffer like your life depends on it with d-pad left. The fewer frames that pass between pauses, the better. I think every other frame is about the best that a human can accomplish.
+4. If you manage to pause on the "on the way to" frame, you're probably one quick frame buffer away from the "on the way back" frame which is the one you want. (I only mention the "on the way to" frame because it's a good indication that you're probably going to get the right frame on the next shield-quick-menu pause.)
+5. Manage to pause on the "on the way back" frame. If you miss that frame, your ESC attempt unfortunately isn't going to work. You'll have to just abort your attempt (be sure to unequip your shield so you don't land on it and lose your skew) and try again from step 1.
+5a. There is a possibility that on the "on the way back" frame you'll actually pop through to the other side of the wall before you can even attempt an ESC. If that happens, congratulations. You just did a regular skew clip and can just continue on happily on the other side of the wall. Fortunately, you can tell whether you're through already before going on to step 6.
+5b. If 5a does not happen, you can usually at least get a sense here whether your ESC is going to work. It's a little subtle, but you should be able to tell that Link's feet are intersecting with the wall at least a little bit. If this is the case, this ESC will most likely work. If not, it still can't hurt to go ahead with the next few steps in case it will work anyway, but you can probably be less confident about this particular attempt.
+6. Continuing to hold down d-pad left, move your cursor to "unequip shield" and advance two more frames by releasing d-pad left for a very short time. (Let go of d-pad left for as short a time as humanly possible to let exactly two frames advance.)
+7. Again in your quick menu, press and hold ZL and move your cursor back to a shield to re-equip a shield. Then, keeping ZL down, press and hold A. With both ZL and A held down, advance two more frames by quickly releasing and re-pressing d-pad left.
+8. At this point, you should either be through the wall or, well, not. If you're through the wall, make sure to unequip your shield before landing to avoid losing your skew. If you're not through the wall, you can return to step 6 for an attempt at an "extra-extended" ESC. Usually returning to step 6 here is only necessary either for really difficult walls or poor skew.
+
+In practice, unless I know a wall is going to be very easy, I'll always frame buffer as if I'm doing an ESC. If I get through as in 5a, I won't need to ESC. If I manage to pause on the right frame in step 5 but am not through the wall, I can stop and consider whether I want to attempt to turn it into an ESC and take the risk that I'll lose or mess up my skew or just abort that attempt and try for another regular skew clip that is less likely to lose me my strong skew.
+
+This method does require being able to see Link. In Trial of the Sword and at least some shrines, there are many places where there's an opaque but not solid (that is, you can walk right through it) wall outside the solid wall which can block your view of Link when trying to clip into an in-bounds area. That's not necessarily a deal-breaker for ESCs (though it does make them a bit trickier.) During the flick, even if your regular clip attempt didn't "work," often times the camera will pop through the solid wall for a very short time -- probably 3 frames, though I'm not 100% sure exactly how many. Whatever the case, you can treat the first frame during which the camera has popped through and is in the room as the "on the way back" frame for purposes of an ESC. It can be trickier to correctly determine whether you've got the right frame in this scenario than in the case where you can see Link's model in its entirety, but as a rule of thumb, usually on the correct frame, Link's left hand should be visible at the top-left of the screen.
+
+Also, it is possible (though I have not personally practiced this art any) to not frame buffer on step 3 and instead just exercise incredibly precise timing. If you want to practice this, know that I believe in you, but expect it to take a lot of practice.
+
+Finally, I should mention that although ESCs are a lot more powerful than regular clips in that they can get you through walls where a regular skew clip can't, even ESCs can often fail even if you do everything right. If it fails, you might want to check if you still have skew before trying again (or just watch as you are attempting another ESC and see if you flick or if you've lost your skew, though just watching the next attempt probably won't work if you're in a situation where you can't see Link because of an opaque barrier.)
+
+### Pros
+* Powerful - Good for getting through "difficult" walls or getting through walls with poor skew. (Even works pretty well on most walls with close-together double layers of collision like shrine doors.)
+* Adaptable - Great for when you're needing to improvise a wall clip.
+* Chainable - You can even apply the shield clip effect more than twice in some cases by repeatedly starting a shield surf in mid air. Doing so isn't even very difficult -- it doesn't require very precise timing or anything.
+* Somewhat retryable - If you fail an ESC, you may not lose skew in the process in which case you can just try again.
+
+### Cons
+* Might lose skew - There's increased risk of losing skew relative to a regular skew clip in my experience. And I'm not quite sure why, honestly, but as I've put lots of practice into my runs, the problem has lessened considerably.
+* Requires "timing luck" - In order to pull off an ESC, you need to be able to hit d-pad left on the exact right frame in one part. I always frame buffer when I'm trying to ESC, which requires luck rather than precise timing. I'm not really sure if that kind of consistent precise timing without frame buffering and (figuratively) crossing your fingers is feasible.
+* Higher learning curve - It's a little bit more complicated than a regular shield clip. Not really that bad, though. It just takes a little bit of practice.
+
+### Resources
+* https://youtu.be/k_vvx5cz9Mk - The main tutorial by Limcube which I used to learn how to do ESCs. Solid tutorial.
+
+Clipping From A Windbomb
+------------------------
+This is a technique that I don't think many runners other than myself and Swiffy22 have ever used. If you've seen other runners use this technique, I'd love to hear about it!
+
+Performing a skew clip need not be done starting from the ground. One can clip through a wall starting from mid air with the paraglider open. Sometimes, for reasons I'm not really certain of, this approach can be more consistent than a regular skew clip. Plus, it saves the time of falling to the ground and lining things up.
+
+In theory, this can be used any time you're in the air and isn't specific to right after a windbomb. For instance, you might be able to glide down into position from the top of a tower and use this technique to clip in without touching the ground. Or start with a BTB ("Bullet-Time Bounce" - it's a good way to cover vast distances very quickly and there is a ton of information out there about it accessible with a bit of Googling or searching YouTube) rather than a windbomb. I only call it "clipping from a windbomb" because on windbombing is the only time this approach has personally gotten me any utility. The steps below will be written assuming a windbomb, but it should be quite straightforward to adapt it for other uses.
+
+In theory, windbomb ESCs are possible, though I've never messed with that. If you attempt a skew clip from a windbomb and frame buffer correctly, you should be able to just jump to step 5 in ESC to turn your windbomb skew clip into a windbomb ESC.
+
+### Prerequisites
+* "Strong" skew leaning in the direction opposite direction you'll be clipping through the wall.
+* Any shield equipped.
+* A wall to clip through.
+* A place to windbomb from. Out-of-bounds in Trial of the Sword, a cryonis block on a blob of water (it usually doesn't have to be very level) or a "glitchy mound" of dirt outside a rest floor make good windbomb launch pads.
+* A bow equipped and at least one arrow of any kind in your inventory. These are necessary in order to get bullet time for the windbomb.
+
+### Steps
+1. Windbomb. I won't go into detail how to do so here (and there are tons of tutorials out there,) but the short version is that you want to line up two bombs while in bullet time such that one bomb explosion pushes the other bomb into Link, sending Link flying.
+2. After opening your paraglider, while in the air, steer to the wall you wish to clip through. If necessary, you can close and immediately reopen your paraglider to stop your horizontal momentum in mid air.
+3. Link may not be facing quite the right direction. If that's the case, just continuing to press in the right direction (perpendicular to the wall) will cause Link to slowly turn toward the wall, but the better/quicker option is generally to pull out your bow and aim while in bullet time to face the correct direction.
+4. Continue (or start, if you are just coming out of bullet time) pressing left stick toward the wall and initiate your shield surf forward roll by holding ZL and pressing A.
+5. As in a regular skew clip, as quickly as possible, hit d-pad left and unequip your shield from the shield quick menu.
+6. Let go of d-pad left and hopefully you'll clip through.
+7. As soon as you're on the other side, you'll need to do two things. First is unequip your shield in order to avoid landing on it and losing skew. The second, since you're probably pretty high up in the air now, is to re-open your paraglider to avoid taking fall damage. (A damage cancel would also work in this case, but could be pretty difficult to pull off. And you probably won't have much time to do so.)
+
+### Pros
+* Fast! - Very quick way to get through walls if you're already doing a windbomb anyway.
+* Can preserve some altitude - Even after clipping through, you typically can have quite a bit of height on the other side of the wall which can be useful for stealthily dropping on unsuspecting foes, getting a couple of bullet-time arrow shots in, ollie clipping, or anything else that can benefit from having altitude.
+* Easy fallbacks - Even if you fail to clip through this way, you can always land and clip through that way, or even try to clip a second time before touching the ground.
+
+### Cons
+* Mostly only for speedruns - This particular technique is unlikely to be useful in many casual circumstances. It's mostly just to shave a second or two off here and there relative to a regular skew clip.
+* Sometimes gives you "turn-y" skew - I don't fully understand how it has this effect (or for that matter anything really about "turn-y" skew,) but sometimes if you're not careful, it will turn "good" skew into "turn-y" skew (see "'Turn-y' Skew" below.) You can potentially avoid this by ensuring you're not in a corner when clipping through, but against a flat wall. Maybe. YMMV.
+* Circumstance-dependent - Not really helpful if you don't have a convenient place to windbomb from.
+
+### Resources
+* A video of myself performing this technique in a Trial of the Sword 100% Unrestricted run: https://youtu.be/5ROy93jKlYo?t=713
+
+Common Issues
+=============
+Consider this a "troubleshooting" section. If you're having trouble with any of the above techniques, this section may help you identify and resolve the problem.
+
+Beginner Difficulties
+---------------------
+This section is just for "rookie mistakes" -- the kind of mistakes likely to be made when you're new to skew and having trouble making it work. Mostly, these are only really applicable to basic shield clipping and not to something like ESCs or clipping from a windbomb.
+
+### Insufficiently Strong Skew
+When I was first learning how to do skew clips, the primary issue that kept me from succeeding at clipping through walls (with regular skew clips) was just not having strong-enough skew. Don't be afraid to be picky with your skew. I know I've said that 65° was about the threshold between strong and not-strong skew, but if you're having trouble, try for more like 85°. When speedrunning, I usually have a pretty good idea how easy the next wall is likely to be, and if it's a particularly easy wall, I'll usually be pretty satisfied with skew leaning only 65° or so (or sometimes even a little less than that.) But for hard walls (see "Hard Walls" below,) it definitely pays to be picky.
+
+### Not Unequipping Your Shield Quickly Enough
+When shield clipping, generally I try to unequip my shield as quickly after starting the shield surf animation as humanly possible. There's really no such thing as too early (unless it's before you even start the shield surf animation, of course.) But I've seen at least one or two beginners asking questions in the #trial-of-the-sword chat on the Breath of the Wild Speedrunning Discord (see "General Resources" below) whose issue was largely just that they weren't unequipping their shield soon enough.
+
+"Strange" Skew
+--------------
+This section is for some odd states you can get into that can cause your skew not to work when trying to get through walls. These are pretty rare occurrences, but it's nice to know about them when you run into them yourself.
+
+### "Turn-y" Skew
+This is a strange and rare issue. I'm not sure what exactly causes it and I'm not sure how many people are even remotely familiar with this phenomenon. The only person I know of who is familiar with this other than myself is LetMeThinkOfAUsername on the Breath of the Wild Speedrunning Discord, and even he is only able to speculate regarding its cause.
+
+The way you know when you have "turn-y" skew is that when checking your skew or attempting a clip, you end up turning to face a different direction than you were facing when you jumped from the ground into your shield surf. For instance, if you have the camera directly behind Link, check your skew, and Link lands facing significantly to the right or left, that's a good indication you've got "turn-y" skew. I don't think I've ever seen "turn-y" skew that caused Link to turn more than 90°. The turn seems to happen right during the flick.
+
+This makes it nearly impossible to get through walls when you're in this odd state. That said, I do have a hunch (that I have yet to test) that perhaps this issue can be worked around by varying the angle from which you approach the wall. (Not directly perpendicular to the wall, but several degrees to the left or right.) I have no idea whether this is likely to work or not, but if anything is going to work, I suspect this would be it.
+
+As to the cause, LetMeThinkOfAUsername has indicated that he thinks it might have to do with "...changing link's facing angle when you set/use the skew." The only time I've gotten it has been as a result of a specific windbomb skew clip in a specific location. The specific wall I was clipping through was invisible (but still had collision) but I think perhaps it happens more often when I clip through at a corner rather than at a flat surface of the wall. When trying to avoid the corner, that seems perhaps to reduce my chances of getting turn-y skew. Still, though, I'm really not sure that theory is on the right track. Also, my testing wasn't able to produce turn-y skew by clipping through at a corner in a shrine, though to be fair I wasn't trying from a windbomb.
+
+More specifically; In my current Trial of the Sword Unrestricted 100% route, right after Beginning Trials floor 11, I clip through the northern wall, swim to the edge of the water, create a cryonis block, use it as a platform to windbomb eastward from, and then steer/curve myself a bit northward in order to clip into a spot near the southern end of the western wall of the 3rd floor of the Beginning trials. As I said, the walls up where I am when I do the clip are invisible, so it's hard to tell whether I'm in a corner or not. But it feels vaguely like when I perform this windbomb skew clip right at a corner, it tends to give me "turn-y" skew.
+
+In case you want to see this turn-y skew in action, here's a video clip I created to show turn-y skew: https://youtu.be/uh80SZJRe6M . And here's the windbomb and clip that I did immediately before the clip where I had turn-y skew that probably must have caused the turn-y skew: https://youtu.be/nVPulWytD-s .
+
+### Skew That Is Too Strong
+Sometimes I'll get atypically strong skew. Skew that's almost exactly 90°. That sounds like a great thing, but in actuality, it tends not to work for clipping for some reason I don't fully understand. Interestingly, 85° or so skew seems better than 89° skew. I'm guessing it has to do with some interesting oddity of Link's hitbox, but honestly there's not much more I can say about it.
+
+### Greater-Than-90° Skew
+This is something I've only ever seen once or twice. Technically, I suppose it qualifies as "skew that is too strong" and could thus be lumped in with the previous section. However, since it's so vastly less common than, say, 89° skew, I figured it deserved its own section.
+
+This is skew that is much much greater than 90°. I've seen skew that was virtually 180°. This kind of skew, as far as I can tell, is completely useless for clipping through walls. When I've asked about it, some folks (including LetMeThinkOfAUsername and LieutenantPeriwinkle) on the Breath of the Wild Speedrunning discord indicated it's useful for skew bounces. I wonder if maybe it might also be useful for clipping through the floor, but that's entirely speculation.
+
+The only time I ever had greater-than-90° skew and had an inkling what caused it, I was pretty sure I got it from a failed ESC attempt. Beyond that, I have no idea what caused it or how to get greater-than-90° skew intentionally.
+
+There's a video of me getting and messing around a bit with greater-than-90° skew at https://youtu.be/pM4poaIZD9o just for reference.
+
+Hard Walls
+----------
+### Some Walls Have Two Layers Of Collision
+Some walls have two separate layers of collision. In some cases, these layers are very close together, in others much further apart. If they're close enough together, an ESC will usually do well. (This is true of, for instance, doors in shrines and of portcullises in Hyrule Castle.) If they're far enough apart that you can stand between them, you'll definitely be better off to treat them as two separate walls and clip through each individually. (Most cliffs and other nearly-vertical natural terrain in the overworld is like this, a lot of walls in shrines are like this, and in Trial of the Sword, Middle Trials floors 6 through 10 are like this.)
+
+### Some Walls Are Just Harder To Clip Through Than Others
+Walls do indeed vary by difficulty in my experience. Even walls that are perfectly flat, have only one layer of collision, and are oriented perfectly in the right compass direction can be harder or easier than other, similar walls for no real discernible reason. The guidance I have for this kind of situation is:
+
+1. If you're not 100% certain you have good skew, it can't hurt to re-check your skew.
+2. Try varying the angle at which you try to clip through. Clipping through perfectly perpendicular to the wall isn't always the optimal option in my experience. Sometimes varying from perfectly perpendicular by a good 45° can work when perfectly perpendicular won't.
+3. Try varying from how far from the wall you jump when starting a skew clip attempt.
+4. Try a different part of the same wall. Maybe moving a few meters to the left or right rather than going right into that particular spot can help.
+5. Maybe try clipping from a windbomb without touching the ground rather than starting from the ground. Often times clipping in from a windbomb can be a lot more consistent than from the ground.
+6. ESCs are your friend (of course with the caveat of potentially losing skew.)
+
+You can also experiment with specific setups. When clipping into the shrines on the great plateau, those who don't use ESCs tend to have some very precise setups for clipping into the side of a shrine and that can improve consistency. I personally tend to go by feel. As I practice my runs, I get a sense of what techniques work best for a given wall. But if you have a lot of trouble with a given wall in your runs, figuring out a more precise setup could definitely improve consistency.
+
+For a bit more about my investigations into why some walls are hard for no discernible reason, see "Appendix 1 - Why Are Hard Walls Hard?" below. (Spoiler alert: I still don't know.)
+
+Other Issues
+------------
+### Ragdoll Corruption
+Also called "ragdoll state" or "ragdoll glitch state." Unfortunately, there doesn't seem to be a huge amount of information out there on the internet about this, but I'll share what little I know. It's caused by jumping into a shield surf over a gap. When you have it, it can make even strong-looking skew much less effective until removed. (It can also prevent windbombs from working.) Removing ragdoll corruption can be done by causing the game to put Link in any ragdoll state. Examples of effective ways to do this (each with its own set of benefits and drawbacks) follow. Unless otherwise stated, if you spaghettify for a frame or two rather than ragdolling (or even if you don't spagghetify,) don't worry. As long as you pulled of the method correctly, you still successfully canceled your ragdoll corruption:
+
+* Bomb yourself. This can take a fair amount of health unfortunately, especially if you have bombs plus.
+* Attempt a windbomb. If you have ragdoll corruption, it probably won't work, but using this method also won't take any more than one heart of health (if you pull off the windbomb correctly.)
+* Certain attacks by enemies. Again, this will generally take hearts and potentially take some time to cajole an enemy into hitting you. 
+* Get kicked by a horse.
+* Spur a horse too much until you get kicked off.
+* Get damaged (for instance shot with an arrow) while in the air.
+* Void out by falling into an infinite void.
+* Jump into a shield surf and unequip the shield with the shield quick menu while you're skidding along the ground (in contact with the ground.) This has several drawbacks: it 1) takes longer than bombing yourself, 2) cancels any skew you have, necessitating re-obtaining skew immediately after, and 3) damages your shield. If you don't actually ragdoll using this method, something probably went wrong and you probably didn't actually cancel your ragdoll corruption.
+
+Again, I haven't been able to find too much information on the internet about Ragdoll Corruption, but one good resource is Swiffy22's video on the topic at https://youtu.be/ck6D817f1hc .
+
+Troubleshooting
+===============
+If even after looking at the "Common Issues" section just above, you're still having issues, there are still options. A few are listed below:
+
+Try To Work Around It
+---------------------
+Perhaps try to get through the wall without using skew. The whole next section "Alternatives To Skew Clipping" is all about how to get through walls if skew clips aren't cutting it or aren't an option for your particular case.
+
+Try Copying What Someone Else Does Exactly
+------------------------------------------
+If you're trying to accomplish something that has already been done before by someone else and you have a video of it being done, try to copy more exactly what they do. Make sure you're obtaining skew in exactly the same way as they are and executing the clip as much like they do as possible.
+
+Seek Help
+---------
+You can totally get in touch with myself or other folks who know a thing or two about skew clipping by joining the Breath of the Wild Speedrunning Discord (link to join in the section "General Resources" below) and posting in the #trial-of-the-sword room. 
+
+Alternatives To Skew Clipping
+=============================
+Want to get through a wall but skew clips won't work? This section is for alternative methods of getting through walls that aren't strictly related to skew clips, but are good stand-ins for a skew clip when skew clips aren't an option. Mostly, these are for salvaging runs which would otherwise be dead runs if you lost skew at a given point.
+
+Instant Shield Pull Clips
+-------------------------
+These have a fairly steep learning curve in my experience but do not require obtaining any skew ahead of time so they're a great way to salvage a run if you lose skew somehow.
+
+An Instant Shield Pull Clip (hereafter called "ISPC") involves getting Link to tilt to the side somewhat similarly to how he does when you have skew. And I suspect the mechanism by which ISPCs work has a strong relationship to how shield clipping works. However, the way ISPCs work is sufficiently different from the way skew clips work that I try not to use the same language for both. Specifically, as Link rotates to the side in the process of doing an ISPC, I refer to it as "tilt" rather than "skew" to keep it distinct from the other concepts above in this document.
+
+The places where I use ISPCs in Trial of the Sword are often places where it's difficult to see very well due to cramped areas that make camera placement awkward. I'm not sure I have a lot of "tricks" to make these clips where it's hard to see Link easier, unfortunately. I haven't gotten the trick of doing them without being able to see Link yet, so I'm not sure if it's something that can be developed to any kind of consistency. That said, I've seen videos where speedrunners have done ISPCs without frame buffering just by ridiculously precise timing. That might be a route to consistent ISPCs in cases where you can't see Link.
+
+Also, I should mention I'm not an expert on these and there are lots of ins and outs of shield pull clips (instant and otherwise) which I'm just not very experienced with. Also, there are variations on several of the steps below which I don't have experience with nor have I found any good guides on. But, you'll find a little bit more information in the videos listed under "Resources" below.
+
+### Prerequisites
+* Any shield equipped.
+* A wall to clip through.
+* A melee weapon (any type -- one-handed, two-handed, or spear -- is fine. In fact, I believe I've seen it done with a bow as well, but I'm no expert at that and it'll change a bit how the steps below work.)
+
+### Steps
+1. Stand about 2.5 to 3 times Link's height away from the wall you wish to clip through.
+2. Face the camera parallel to the wall, perpendicular to the direction toward the wall. That is, if you're trying to clip east through a wall, you'll want the camera facing north or south. (Actually, I lied a little bit. I find it's best to face just a little bit away from the wall, not perfectly parallel to it, but I'll go into more detail on that after these steps.)
+3. Holding ZL, run (that is, as fast as you can without using the B button) toward the wall.
+4. At about 1.5 times Link's height from the wall, still holding ZL, jump with X and immediately tap R. This will cause Link to turn facing away from the camera immediately after leaving the ground. Don't hold R down.
+5. Immediately after that, still holding ZL, start a shield surf forward roll by tapping A.
+6. Start frame buffering with d-pad left.
+7. You should shortly smack your shoulder against the wall while completing your forward roll. Keep frame buffering.
+8. As you start sliding down the wall with your shoulder in contact with the wall, if you're lucky, your shield will "catch" a bit on the wall. As the side of your shield catches on the wall, it will cause you to begin "tilting" away from the wall. If this doesn't happen, (and I haven't been able to get this to happen consistently in my attempts) you'll just have to abort your attempt (unequipping your shield can prevent your shield from taking damage by landing on it) and try again from step 1.
+9. Keep frame buffering until you feel you have sufficient tilt. You should be aiming for upwards of 45°, though it's possible lesser tilt may work sometimes if you're having trouble getting 45°.
+10. While paused in the quick menu, select "unequip shield" and advance two frames by releasing and re-pressing d-pad left very very quickly.
+11. Paused again on the shield quick menu, press and hold ZL, then select a shield to re-equip it. Before leaving the menu, still holding ZL, also press and hold A. Letting up on d-pad left will cause you to re-enter shield surf. Only let two more frames advance before re-entering the shield quick menu.
+12. At this point, if your camera has popped through the wall, you're through the wall and can end your ISPC attempt (though I'd recommend unequipping your shield to avoid damaging it by landing on it.) If you're not through the wall, you may still be able to get through the wall by going back to step 10 and continuing from there. You can keep looping this way as long as you're still at least a little bit above the ground.
+
+In step 2 in a parenthetical, I mentioned that it's best to face somewhat away from the wall. The reason for this is two-fold. First as you hold the left stick left or right, Link doesn't travel in a straight line, but rather in an arc. The second is that as you hold the left stick left or right, the camera will turn as it follows Link. You want Link facing directly parallel to the wall and you want the camera also facing directly parallel to the wall at the point when Link's shoulder hits the wall. So, to account for both Link and the camera turning as you move toward the wall, you'll want to aim about 20° to 25° away from the wall relative to exactly parallel to the wall. If you're having trouble getting the shield to catch on the wall in step 8, this is probably the main thing to try adjusting in subsequent attempts to resolve the issue.
+
+### Pros
+* No skew - Does not require obtaining skew beforehand. This is really the major killer feature of ISPCs that makes it great for when you need to get through a wall but don't have skew.
+
+### Cons
+* High learning curve - It's pretty difficult to pull off (in my experience) compared to a regular skew clip or even an ESC. (Though, different things are more difficult for different people, so don't let this deter you from trying; maybe it'll be really easy for you!)
+* Inconsistent - I've never been able to get really consistent with it, but I think there are others who have gotten much more consistent.
+
+### Resources
+* https://youtu.be/aVwcqsS9wqI - The video tutorial by Yuda from which I learned to ISPC. The best tutorial on ISPCs I've been able to find so far.
+* https://youtu.be/aVwcqsS9wqI - A video by LegendofLinkk showing a couple of slight variations on shield pull clips.
+
+Others
+------
+Just a short list of other techniques for getting through walls that I'm familiar with but don't feel like enough of an expert to speak to:
+
+* Scope Clip - Involves activating the Sheikah Slate while walking into a corner or against a wall.
+* Stasis Clip - Involves stasising and hitting an object to charge it way up, then standing between the stasised object and the wall while pushing against the stasised object.
+* Cryonis Clip - Involves placing a cryonis block just slightly too close to a corner to fit between the block and the corner then running into the corner while on top of the block to slip down into a place too small to fit, thereby clipping through the wall. Here's a clip of it in action: https://youtu.be/yli-PpMwPbc .
+* Instant Skew Clip - Not to be confused with Instant Shield Pull Clip. Involves doing something like an ESC through a slightly-sloped wall without getting skew ahead of time.
+* Repeating Shield Clipping - I'll be honest, I've basically never heard of this until just now. If I ever have occasion to mess with these, I might update this guide.
+* Shield Pull Clip - If I'm being 100% honest here, I don't really know the difference between a Shield Pull Clip and an Instant Shield Pull Clip, but I've only ever messed with the Instant Shield Pull Clip.
+
+Some of these (especially the one(s) I've virtually never heard of before) are straight from the Breath of the Wild glitches spreadsheet. (See the section "General Resources" below for a link to the spreadsheet.)
+
+For the ones for which I didn't include any links to tutorials or anything, some Googling and/or searching on YouTube will likely get you more information.
+
+General Resources
+=================
+* https://discord.gg/GJCBmec7 - The Breath of the Wild Speedrunning Discord - By far the best resource for any kind of speedrunning, glitching, advanced combat, game engine mechanics, and general Breath of the Wild knowledge out there. They have a "#resources" channel which has tons more resources as well. The "#trial-of-the-sword" chat has folks (including myself) in it who know a thing or two about skew and can help if you're having issues.
+* https://docs.google.com/spreadsheets/d/15DYWr2WHUI3pxxjgeEaZ7MHoo19rmBTIE7koJ7L1-eM/edit#gid=0 - A Google Docs spreadsheet cataloging pretty much every known glitch in Breath of the Wild. Very helpful resource.
+
+Thanks
+======
+This guide definitely would not have happened without a lot of awesome Breath of the Wild speedrunners sharing a lot of information and inspiration for the benefit of the Breath of the Wild speedrunning community without any expectation of recompense. So, I thought it appropriate to include a "thank yous" section here to shout out to a few specific folks who have helped me along the way, though understand that a comprehensive list of all whose contributions made this guide possible would be impossible. To any I've omitted, please accept my apologies -- it doesn't mean your contribution was any less important. Any inaccuracies or other problems in this guide are my fault, not theirs.
+
+In no particular order, many thanks to:
+
+* Squashua - Runner of Trial of the Sword Restricted - For constant encouragement in my speedrunning efforts and for suggesting I write this guide in the first place.
+* Puppet/PuppetMaster9 - Breath of the Wild researcher and Trial of the Sword Any% Unrestricted runner - For spreading information about skew and related glitches and for discovering a relationship between ragdoll corruption and skew clipping.
+* Joesheph - Trial of the Sword 100% runner - For inspiring me and others to run Trial of the Sword 100%.
+* Swiffy22 - Breath of the Wild speedrunning community leader and content creator - For keeping the community running while still interacting even those runners like me who stick to obscure categories.
+* Linkus7 - Breath of the Wild speedrunner and content creator - For vast amounts of amazing tutorials on all topics Breath of the Wild.
+* Limcube - Breath of the Wild speedrunner and content creator - Also for vast amounts of amazing tutorials on all topics Breath of the Wild.
+* LetMeThinOfAUsername - A user on the Breath of the Wild speedrunning discord - For always having the answer to every question regarding the minute details of the inner workings of The Legend of Zelda: Breath of the Wild and always sharing openly.
+* Breath of the Wild Run verifiers on Speedrun.com - Every single one of them, but particularly taykage, Komali, and Cornflake - For verifying numerous of my runs and generally going well out of their way to be helpful.
+* All those who have run Trial of the Sword Unrestricted before me - Particularly MeleMele/メレメレ who discovered the MJWW method of getting to B12 - For keeping the category alive and active.
+* The Whole Breath of the Wild speedrunning community - Youtubers, Twitch Streamers, speedrunners, content creators, researchers, teachers, everybody on the Breath of the Wild speedrunning Discord server, and everyone else who contributes - For being awesome and helpful in every way!
+* Any Austin - My favorite YouTube content creator bar none - For instilling a love of video game glitches in me and introducing me to the awesome world of The Legend of Zelda: Breath of the Wild glitches. And just for being Any Austin.
+* You - The reader - For reading my overly-long-winded guide on shield skew and wall clipping. :D
+
+Appendices
+==========
+
+Appendix 1 - Why Are Hard Walls Hard?
+-------------------------------------
+In the section "Hard Walls" above, I talked about how some walls are "harder" to get through than others for no discernible reason. I just wanted to spend some time detailing what little I know about why this might be the case and what reasons for this I've mostly ruled out at this point. (Though, if you want to double-check my findings, I'm more than happy to see if other folks' results match mine.
+
+### Theory 1: IEEE-754 Floating Point Number Precision
+To explain this theory, I'll have to give a bit of background on how computers represent certain types of numbers. (Don't worry. You won't need a computer science degree to understand this.)
+
+When a computer needs to represent or do math on numbers that may potentially have a decimal part (1.5, 1.2345, 3.14159265358979, etc,) the most typical way they go about doing so is referred to as the "IEEE-754 binary64 format" (also known as a "double-precision floating-point number format.") This format is very versatile and flexible, but has one quirk: its precision varies as its magnitude varies. That is to say that for numbers very close to zero (on the magnitude of, for instance, 1*10^-13 or 0.0000000000001,) the "next number" that can be represented is extremely close to that number (only about 6.310887*10^-30 or 0.000000000000000000000000000006310887 more.) However, for very large numbers (on the magnitude of, for instance, 1*10^20 or 100,000,000,000,000,000,000,) the "next number" that can be represented is quite far away (roughly 8,000). When you do math on an IEEE-754 binary64 format number, somewhere under the hood it basically "rounds" to the nearest number that it can represent. So, for instance, if you add a number less than 4,000 to a number that's close to 1*10^20, the number it rounds to will be the exact same number as you had before adding the number less than 4,000. A slightly odd concession that allows for relatively efficient floating-point number representation.
+
+Almost all modern video games including The Legend of Zelda: Breath of the Wild use the IEEE-754 binary64 format extensively. This has some interesting effects. When an object (such as Link's hitbox or model) is extremely distant from "the origin" (the place on the overworld, in a shrine, in Trial of the Sword, etc represented by the coordinates (0, 0, 0),) the resolution of its model will appear degraded. The best example I know of is in YouTube videos of "Link falling for 10 hours" and such. (Here's a video of Limcube watching this process for 10 hours: https://youtu.be/_R4HpvQbssY . Skip ahead to near the end to see just how degraded Link's model ends up looking. Just because I think this is interesting, here's an example of my favorite content creator on YouTube showing something similar happening in Metroid Prime: https://youtu.be/uvrWLUVqFoM?t=644 .)
+
+So, at one point, I had a hunch that the reason why some walls just seem harder than others is because the resolution of Link's coordinates varies. Perhaps, I thought, if you're very far from the origin, that affects the resolution of Link's coordinates enough to, in effect, reduce the effectiveness of shield skew. But unfortunately, after doing some testing, I don't think that theory stands up to scrutiny.
+
+For one thing, I know roughly where the origin is in Trial of the Sword. It's "quite a ways" to the south-east of the south-eastern-most room in Trial of the Sword (which happens to be the 22nd floor of the final trials.) But the clip I do in the room closest room to the origin is typically one of the harder clips in the game. Meanwhile, there are clips much further from the origin which are much easier. Nor does the opposite seem to be true. Clips far from the origin don't seem to be reliably easier than clips closer thereto.
+
+For another thing, the points in Trial of the Sword furthest from the origin are less than 5,000 units away from the origin, meaning the precision even there is still ridiculously fine. On the order of 10^-12 or 0.000000000001. (For reference, one unit is a meter and Link is 1.584 units tall.)
+
+### Theory 2: Varying Skew Quality And/Or Ragdoll Corruption
+About the only time I'm clipping through walls is when I'm doing a run of Trial of the Sword Unrestricted 100%. And, as for basically every speedrun out there, I've got a particular route that I follow. (I do tweak it sometimes, of course, but mostly it stays the same.) I have very particular places where I get skew, very particular places where I clip. Otherwise one run is mostly the same as any other unless I'm having to improvise because something went wrong.
+
+It's possible that because I'm doing almost the exact same thing every run, I just always tend to have roughly the same "quality" skew at the same point in every run. So, when I get to such-and-such wall that is a "hard" wall, it's not hard because that wall is intrinsically difficult to clip through, but instead because when I get there, I tend to have poor-quality skew (or otherwise some sort of skew that isn't so good for that particular wall.) Also, as mentioned in the section "Ragdoll Corruption" above, it's possible to be in some odd states where skew, even if it "looks good" doesn't work. It's possible that the reason why I think some walls are "hard" and others "easy" is simply because I'm much more likely to have ragdoll corruption in some parts of the run than others.
+
+The truth is, this is a possibility I can't rule out at the moment. Maybe all walls are equally easy as long as they're in a cardinal direction and have only one layer of collision.
+
+(There is, however, one exception I know of -- one unique wall I know to be intrinsically difficult to get through. That is the "energy barrier" around the final platform in the Master Sword room in Trial of the Sword which dissipates as soon as you stand on the platform and examine it. Only recently, Swiffy22 managed to clip through it using a Shield Pull Clip, and I believe he's the first to manage to get through that wall in any way. See this Twitter thread for details: https://t.co/UXtq8GDutZ .)
+
+Feedback
+========
+This document is, I hope, a good try at a comprehensive and helpful guide for skew clipping. But, it will no doubt be incomplete, confusing, or otherwise lacking. That's where you come in, dear reader. I appreciate you taking the time to read my guide and would absolutely love any feedback you might have for future versions of this guide.
+
+If you'd like to contact me, probably the best way to do so is via Discord. You can message me directly ("AntiMS#9971") or drop a message in the #trial-of-the-sword chat on the Breath of the Wild speedrunning server. (There's a link for joining the server in the section "General Resources" above.)
+
+Another option is to PM me on YouTube: https://www.youtube.com/channel/UCYtDnjbQ4qWccq1rjS3l1qw or Twitch: https://www.twitch.tv/antims .
+
+That's it! Happy clipping!

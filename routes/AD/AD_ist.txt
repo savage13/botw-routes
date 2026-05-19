@@ -1,0 +1,20 @@
+!init slate glider 4 orb
+!system [sync-overworld]
+get axe club royalc royal 10 arrow 4 ice 3 ancient pot[life=900] ruby 3 pepper 3 shroom 3 thistle 3 apple 2 fairy
+equip royalc
+save
+drop pepper shroom thistle apple
+!remove all pepper all shroom all thistle all apple all fairy
+!break 5 slots
+get 2 pepper 2 shroom 2 thistle 2 apple fairy
+!remove all materials
+!break 4 slots
+drop all weapons
+drop all bows
+drop all shields
+get axe club royalc royal
+unequip all weapons
+reload
+shoot 1 time
+save
+reload
