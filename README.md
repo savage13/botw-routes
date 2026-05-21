@@ -184,6 +184,8 @@ routes/AS
   - https://github.com/cobchamp/botw_all_shrines
   - 2023-02-17
 - asroutes (Bings)
+  - https://celer.pistonite.org/view/savage13/botw-routes/AS_BingsF_2.5
+    - Version 2.5
 
 ## 100 Percent
 routes/100
