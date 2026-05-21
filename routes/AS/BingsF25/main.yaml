@@ -1,0 +1,289 @@
+
+
+- Great Plateau:
+  - Location::SOR:
+      icon: location
+      comment: Shrine of Resurection
+  - SoR clip:
+      icon: location
+      color: white
+
+  - _Shrine::OwaDaim:
+      comment: Stasis shrine
+
+  - _Shrine::KehNamut:
+      comment: Cryonis shrine
+    
+  - _Shrine::OmanAu:
+      notes: Clear ragdoll glitch in shrine
+      comment: Magnesis shrine
+
+  - _Shrine::JaBaij:
+      comment: Bombs shrine
+
+
+  - BLSS to Temple of Time
+
+  - .!!(Paraglider):
+      icon: king
+      coord: [-809.33, 263.58, 1964.35]
+      split-type: UserDefined
+
+  
+- Segment 1:
+  - Item<Treasure Chest>:
+      comment: Solider's Bow
+      icon: chest
+      coord: [-814.73, 263.58, 1964.88]
+  - _Tower::GreatPlateau:
+      color: blue
+  - _Shrine::BoshKala 
+  - _Shrine::WahgoKatta
+  - _Shrine::HilaRao
+  - Item<Fairy>:
+      icon: material
+      coord: [949.19, 138.58, 502.84]
+  - Item<Big Hearty Radish x4>:
+      icon: material
+      coord: [844.13, 131.63, 292.32]
+  - Item<Endura Shroom x6>:
+      icon: material
+      coord: [863.29, 131.97, 272.13]
+  - _Shrine::KayaWan
+  - _Shrine::DakaTuss
+  - Item<Pot Lid>:
+      icon: equipment
+      coord: [1798.63, 219.9, 1011.16]
+  - Item<Small Goddess Statue>:
+      icon: location
+      coord: [1840.12, 218.54, 997.89]
+      comment: 2 Hearts
+  - _Shrine::TalohNaeg
+  - _Shrine::LaknaRokee:
+      comment: SCW
+      notes: Edge of Duality
+  - _Shrine::DowNaeh
+  - _Shrine::KamUrog:
+      notes: need 2 hearts
+  - _Shrine::TotoSah
+  - Item<Swift Violet x4>:
+      icon: material
+      coord: [1636.16, 148.76, 1901.35]
+  - _Shrine::HaDahamar
+  - _Shrine::ReeDahee
+  - _Shrine::SheeVaneer:
+       comment: SCW
+  - _Shrine::SheeVenath
+  - Item<Treasure Chest>:
+      icon: chest
+      coord: [1747.82, 341.89, 2940.17]
+  - _Shrine::ShodaSah:
+       comment: 5x Ice Arrows
+  - _Shrine::ShaiUtoh
+  - Item<Cooking Pot>:
+      icon: equipment
+      coord: [1573.26, 165.96, 3530.55]
+      comment: Cook speed food
+  - _Tod::Night
+  - _Shrine::QukahNata:
+      comment: Rubber Tights
+  - Item<Fleet-Lotus Seeds x12>:
+      icon: material
+      coord: [2381.1, 320.4, 2856.94]
+  - _Shrine::TawaJinn
+  - _Shrine::MyahmAgana
+  - Item<Sunshroom>:
+      icon: material
+      coord: [3777.1, 356.42, 2136.88]
+  - _Shrine::MuwoJeem
+  - _Shrine::ChaasQeta:
+      comment: Climber's Gear
+  - _Shrine::KorguChideh:
+      comment: Gold Rupee
+  - _Shrine::KahYah
+  - _Shrine::YahRin
+
+- Segment 2:
+  - _Warp::Shrine::TalohNaeg:
+       color: yellow
+  - Item<Mountain Buck>:
+      icon: material
+      coord: [2601.5, 222.01, 552.5]
+  - _Shrine::MezzaLo
+  - _Shrine::SohKofi
+  - _Shrine::ShehRata
+  - _Shrine::NamikaOzz
+  - _Shrine::MirroShaz:
+      comment: 5 hits stasis (full stam wheel)
+  - _Shrine::SaasKosah
+  - Item<Treasure Chest>:
+      icon: chest
+      coord: [-196.46, 153.2, -1218.59]
+      comment: Dinraal's Scale
+  - Item<Treasure Chest>:
+      icon: chest
+      coord: [-182.29, 235.23, -1169.52]
+      comment: Naydra's Scale
+  - _Shrine::KuhnSidajj
+  - _Shrine::MonyaToma
+  - _Shrine::MaagNorah
+  - Item<Spicy Pepper>:
+      icon: material
+      coord: [-3268.81, 228.01, -1819.91]
+  - _Tod::Noon
+  - _Shrine::BareedaNaag
+  - _Shrine::VooLota:
+      comment: Rushroom or egg to activate
+  - _Shrine::ShaWarvo
+  - Item<Snowquill Trousers>:
+      icon: equipment
+      coord: [-3632.85, 292.25, -1784.51]
+  - _Shrine::AkhVaquot
+  - _Shrine::KahOkeo
+  - _Shrine::TenaKosah
+  - _Shrine::KeehaYoog
+  - _Shrine::KemaKosassa
+  - _Shrine::KemaZoos
+  - Item<Treasure Chest>:
+      icon: chest
+      coord: [-4600.49, 139.59, 2650.5]
+      comment: 10x Fire Arrows
+  - _Shrine::ThoKayu
+  - Item<Fairy x4>:
+      icon: material
+      coord: [-4873.2, 125.78, 3808.16]
+  - _Shrine::HawaKoth  
+
+
+- Segment 3:
+  - _Warp::Shrine::KeehaYoog:
+       color: orange
+  - _Tod::Noon
+  - _Shrine::KuhTakkar
+  - _Shrine::ShoDantu
+  - _Shrine::SasaKai:
+       comment: activate 2:55 - 3:50
+  - _Shrine::DaqoChisay
+  - _Shrine::RaqaZunzo:
+       comment: SCW
+       notes: Radiant Shield
+  - _Shrine::DakoTah
+  - _Shrine::KayNoh
+  - _Shrine::KorshOhu
+
+  - _Shrine::MisaeSuma
+  - _Shrine::DilaMaag:
+       comment: Barbarian Armor
+  - _Shrine::SumaSahma:
+       comment: Activate 4:00 - 5:30, cryo block after 4:40       
+  - _Shrine::IshtoSoh
+  - _Shrine::ShoqaTatone
+  - _Shrine::KaoMakagh
+  - _Shrine::PumaagNitae
+  - _Shrine::ShaeKatha
+  - _Shrine::YaNaga
+
+
+- Segment 4:
+  - _Warp::TechLab::Hateno:
+       color: red
+  - _Shrine::TahnoOah:
+       color: red
+  - _Shrine::JitanSami
+  - _Shrine::NeezYohma
+  - _Shrine::DagahKeek
+  - _Shrine::RuccoMaag
+  - _Shrine::ShaiYota
+
+- Segment 5:
+  - _Warp::Shrine::ShaWarvo:
+       color: lime
+  - _Shrine::MakaRah
+  - _Shrine::MozoShenno
+  - _Shrine::ShadaNaw
+  - _Shrine::HiaMiu
+  - _Shrine::ToQuomo:
+      comment: Royal Claymore
+
+- Segment 6:
+  - _Warp::Shrine::ShadaNaw:
+       color: blue
+  - _Shrine::RokUwog
+  - _Shrine::ShaGehma
+  - _Shrine::QazaTokki:
+      comment: Barbarian Pants
+  - _Shrine::KetohWawai
+
+- Segment 7:
+  - _Warp::Shrine::ShadaNaw:
+       color: black
+  - _Shrine::GomaAsaagh:
+       comment: Royal Claymore
+  - _Shrine::LannoKooh
+  - _Shrine::GeeHarah
+  - _Shrine::RinOyaa
+  - _Shrine::RonaKachta
+
+- Segment 8:
+  - _Warp::Shrine::KuhnSidajj:
+       color: fuchsia
+  - _Shrine::DaagChokah
+  - _Shrine::KeoRuug
+  - _Shrine::MaagHalan
+  - Item<Flamebreaker Armor>:
+      icon: equipment
+      coord: [1643.34, 490.49, -2404.52]
+  - _Shrine::ShaeMosah
+  - _Shrine::ShoraHah
+  - _Shrine::GoraeTorr
+  - _Shrine::ZunaKai
+  - _Shrine::TuKaloh:
+      comment: Barbarian Helm
+
+- Segment 9:
+  - _Warp::Shrine::ShaeMosah:
+     color: white
+  - _Shrine::DaqaKoh
+  - _Shrine::KayraMah
+  - _Shrine::QuaRaym
+  - _Shrine::TahMuhl
+  - _Shrine::MoaKeet
+  - _Shrine::SahDahaj
+  - _Shrine::ZeKasho
+  - _Shrine::DahHesho:
+       comment: Ancient Battle Axe
+  - _Shrine::KenaiShakah
+  - _Shrine::KahMael
+  - _Shrine::RitaagZumo
+  - _Shrine::KatosaAug
+  - _Shrine::TutsuwaNima
+
+- Segment 10:
+  - _Warp::Shrine::KuhTakkar:
+       color: purple
+  - _Shrine::MijahRokee:
+       comment: SCW
+  - _Shrine::ShaeLoya
+  - _Shrine::TohYahsa
+  - _Shrine::DunbaTaag
+  - _Warp::Shrine::AkhVaquot
+
+- Segment 11:
+  - _Warp::Shrine::KuhTakkar:
+       color: red
+  - _Shrine::JolooNah
+  - _Shrine::JeeNoh
+  - _Shrine::DahKaso
+  - _Shrine::RotaOoh
+  - _Shrine::KaamYatak
+  - _Shrine::MoggLatan
+  - _Shrine::SheemDagoze
+  - _Shrine::ZaltaWa
+  - _Shrine::NoyaNeha
+  - _Shrine::KatahChuki
+  - Item<Ganon>:
+      icon: location
+      coord: [-254.03, 294.84, -1024.13]
+  - Ganon::Activate:
+      comment: Claymore, Bomb Arrows
+
