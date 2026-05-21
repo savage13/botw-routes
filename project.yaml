@@ -1,4 +1,4 @@
 entry-points:
   # BingsF version 2.5
-  as_bingsf_v2.5: routes/AS/BingsF25/
+  as_bingsf_v2.5: /routes/AS/BingsF25/
   
